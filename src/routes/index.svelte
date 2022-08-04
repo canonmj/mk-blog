@@ -1,33 +1,40 @@
 <script>
 	import '../app.css';
 	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
+	import { add_attribute } from 'svelte/internal';
 
-	let container;
+	let display = false;
+	let itemObj;
 
 	onMount(() => {
-		let amount = 20;
-		let i = 0;
-		while (i < amount) {
-			const drop = document.createElement('i');
+		display = true;
+		let arr = new Array(20).fill({ width: '', size: '' });
 
-			let size = Math.random() * 5;
-			let posX = Math.floor(Math.random() * window.innerWidth);
-
-			drop.style.width = 0.2 + size + 'px';
-			drop.style.left = posX + 'px';
-
-			container.appendChild(drop);
-			i++;
-		}
+		itemObj = arr.map(() => {
+			let obj = {};
+			obj['width'] = Math.random() * 5 + 0.2;
+			obj['size'] = Math.floor(Math.random() * window.innerWidth);
+			return obj;
+		});
 	});
+
+	// Math.random() * 5 + 0.2
+	// Math.floor(Math.random() * window.innerWidth)
+	$: console.log(itemObj);
 </script>
 
-<div bind:this={container} class="container" />
-
-<style>
-	/* @keyframes -global-animate {
-		0% {
-			transform: translateY(-200px);
-		}
-	} */
-</style>
+<div class="container">
+	{#if display}
+		{#each itemObj as item}
+			<div
+				class="i"
+				style="
+			width: {item.width + 'px'};
+			left: {item.size + 'px'}
+		"
+				transition:fly={{ y: Math.random() * -1000, duration: 5000 }}
+			/>
+		{/each}
+	{/if}
+</div>

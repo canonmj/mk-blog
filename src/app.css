@@ -10,7 +10,7 @@
 	height: 100vh;
 }
 
-i {
+.i {
 	position: absolute;
 	height: 200px;
 	background: linear-gradient(transparent, #ffff);
@@ -19,20 +19,12 @@ i {
 	animation: animate 5% infinite;
 }
 
-i:nth-child(3n + 1) {
+.i:nth-child(3n + 1) {
 	background: linear-gradient(transparent, turquoise);
 }
-i:nth-child(3n + 2) {
+.i:nth-child(3n + 2) {
 	background: linear-gradient(transparent, royalblue);
 }
-i:nth-child(3n + 3) {
+.i:nth-child(3n + 3) {
 	background: linear-gradient(transparent, lavender);
-}
-@keyframes -global-animate {
-	0% {
-		transform: translateY(-200px);
-	}
-	100% {
-		transform: translateY(calc(100vh + 200px));
-	}
 }
