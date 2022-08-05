@@ -39,3 +39,6 @@ You can preview the production build with `npm run preview`.
 
 ## Animation
 https://www.youtube.com/watch?v=5oEo98BrRqs
+
+## Supabase
+https://supabase.com/
